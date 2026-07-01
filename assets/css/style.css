@@ -65,6 +65,14 @@ img{display:block;max-width:100%}
 }
 
 /* ---------- home sections ---------- */
+.hero-deck{cursor:pointer}
+.deck-hint{
+  position:absolute;bottom:-2.2rem;left:50%;transform:translateX(-50%);
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  opacity:0;transition:opacity .4s;
+}
+.hero-deck:hover .deck-hint{opacity:1}
+.home-tiles{padding-top:2rem}
 .intro{padding:9rem 1.6rem 4rem;max-width:880px;margin:0 auto;text-align:center}
 .positioning{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1.25}
 .bridge{margin-top:1.6rem;font-size:.85rem;letter-spacing:.05em}
@@ -155,8 +163,4 @@ main{min-height:70svh}
 .lb-count{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);font-size:.75rem;color:var(--muted);letter-spacing:.1em}
 
 /* ---------- reveal ---------- */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  .deck-img,.g-item img,.tile-img img{transition:none}
+.reveal{opaci
