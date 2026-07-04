@@ -44,28 +44,37 @@ img{display:block;max-width:100%}
   font-size:.68rem;letter-spacing:.14em;color:var(--muted);
 }
 .hero-deck{
-  position:absolute;top:8rem;bottom:34svh;left:0;right:0;margin:auto;
-  display:flex;align-items:center;justify-content:center;
-  touch-action:pan-y;
+  position:absolute;left:0;right:0;
+  top:calc(8rem - 80px);bottom:calc(34svh - 80px);padding:80px 0;
+  display:flex;align-items:center;
+  overflow-x:auto;overflow-y:hidden;overflow-anchor:none;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
 }
+.hero-deck::-webkit-scrollbar{display:none}
+.hero-deck.dragging{scroll-snap-type:none;cursor:grabbing}
 .strip a,.strip img{user-select:none;-webkit-user-drag:none}
-.strip{display:flex;align-items:center;gap:1.4rem;will-change:transform;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-.strip.dragging{transition:none}
+.strip a:hover{opacity:1}
+.hero-deck.open .strip-item:hover{opacity:1}
+.strip{display:flex;align-items:center;gap:1.4rem;padding:0 50vw}
+.deck-card{scroll-snap-align:center}
+.hero-deck.open .strip-item{scroll-snap-align:center}
 .deck-card{position:relative;z-index:2;flex:none}
 .deck-img{
-  height:52svh;max-height:52svh;width:auto;max-width:60vw;object-fit:cover;
+  height:34svh;width:auto;max-width:60vw;object-fit:cover;
+  background:#fff;
   box-shadow:0 30px 80px rgba(0,0,0,.65);
-  transition:transform .7s cubic-bezier(.2,.8,.2,1);
+  transform:scale(var(--s,1));
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
 }
 .deck-main{position:relative}
-.hero-deck:hover .deck-main{transform:scale(1.015)}
 .strip-item{
   flex:none;height:34svh;pointer-events:none;opacity:0;
   transform:translateX(var(--dx,0px)) scale(.5);
   transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .5s ease;
   transition-delay:var(--d,0s);
 }
-.strip-item img{height:100%;width:auto;object-fit:cover;filter:grayscale(.15);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.strip-item img{height:100%;width:auto;object-fit:cover;filter:grayscale(.15);box-shadow:0 20px 60px rgba(0,0,0,.5);transform:scale(var(--s,1));transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .hero-deck.open .strip-item{opacity:1;transform:none;pointer-events:auto}
 .hero-deck.open .deck-hint{opacity:0}
 .giant{
@@ -171,4 +180,7 @@ main{min-height:70svh}
 .lb-close{top:.8rem;right:1rem;font-size:2rem}
 .lb-prev{left:.6rem;top:50%;transform:translateY(-50%)}
 .lb-next{right:.6rem;top:50%;transform:translateY(-50%)}
-.lb-count{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-
+.lb-count{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);font-size:.75rem;letter-spacing:.12em;color:var(--muted)}
+
+/* ---------- custom cursor ---------- */
+.cursor{display:none}
