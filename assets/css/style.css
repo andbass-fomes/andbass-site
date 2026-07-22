@@ -182,5 +182,27 @@ main{min-height:70svh}
 .lb-next{right:.6rem;top:50%;transform:translateY(-50%)}
 .lb-count{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);font-size:.75rem;letter-spacing:.12em;color:var(--muted)}
 
+/* ---------- images index blocks ---------- */
+.block-head{max-width:1200px;margin:0 auto;padding:2.6rem 1.6rem 0}
+.subhead{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4vw,3rem);line-height:1.05;letter-spacing:-.01em}
+.subhead a:hover{font-style:italic;opacity:1}
+.subhead-sm{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.block-note{margin-top:.6rem;max-width:44rem;font-size:.9rem}
+
+/* ---------- render projects ---------- */
+.proj{max-width:1200px;margin:0 auto;padding:3.4rem 1.6rem 1rem;border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:none}
+.proj-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.6rem 2rem;margin-bottom:1.6rem}
+.proj-meta{font-size:.78rem;letter-spacing:.04em;text-align:right}
+.proj-gallery{columns:2;column-gap:1.4rem}
+@media(min-width:900px){.proj-gallery{columns:3}}
+.proj-gallery .g-item{break-inside:avoid;margin-bottom:1.4rem}
+.proj-hero{column-span:all;margin-bottom:1.4rem}
+
+/* ---------- 3d models ---------- */
+.g-hide{display:none}
+.cap{margin-top:.5rem;font-size:.75rem;letter-spacing:.04em}
+.gallery.models .g-item{margin-bottom:2rem}
+
 /* ---------- custom cursor ---------- */
 .cursor{display:none}

@@ -179,20 +179,35 @@
   if (!lb) return;
   var img = lb.querySelector('img');
   var count = lb.querySelector('.lb-count');
-  var gitems = Array.prototype.slice.call(document.querySelectorAll('.g-item img'));
-  if (!gitems.length) return;
-  var idx = 0;
+  // Gruppi: le figure con data-group (es. /3d, un gruppo per modello) sfogliano solo
+  // il proprio gruppo; le pagine senza data-group restano un'unica sequenza.
+  var allFigs = Array.prototype.slice.call(document.querySelectorAll('.g-item'));
+  if (!allFigs.length) return;
+  var groups = {};
+  allFigs.forEach(function (f) {
+    var g = f.getAttribute('data-group') || '_page';
+    var im = f.querySelector('img');
+    if (!im) return;
+    (groups[g] = groups[g] || []).push(im);
+  });
+  var cur = [], idx = 0;
 
   function show(i) {
-    idx = (i + gitems.length) % gitems.length;
-    img.src = gitems[idx].getAttribute('data-full') || gitems[idx].src;
-    img.alt = gitems[idx].alt;
-    count.textContent = (idx + 1) + ' / ' + gitems.length;
+    idx = (i + cur.length) % cur.length;
+    img.src = cur[idx].getAttribute('data-full') || cur[idx].src;
+    img.alt = cur[idx].alt;
+    count.textContent = (idx + 1) + ' / ' + cur.length;
   }
-  function open(i) { show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+  function open(g, i) { cur = groups[g]; show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
   function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; img.src = ''; }
 
-  gitems.forEach(function (el, i) { el.parentElement.addEventListener('click', function () { open(i); }); });
+  allFigs.forEach(function (f) {
+    var g = f.getAttribute('data-group') || '_page';
+    var im = f.querySelector('img');
+    if (!im) return;
+    var i = groups[g].indexOf(im);
+    f.addEventListener('click', function () { open(g, i); });
+  });
   lb.querySelector('.lb-close').addEventListener('click', close);
   lb.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
   lb.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
