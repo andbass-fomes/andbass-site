@@ -103,6 +103,7 @@ img{display:block;max-width:100%}
 }
 .entry:last-child{border-bottom:1px solid var(--line)}
 .entry-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;min-width:11rem}
+@media(min-width:900px){.entry-label{flex:0 0 18rem}}
 .entry-title{font-family:var(--serif);font-size:clamp(2.6rem,7vw,5.5rem);line-height:1;letter-spacing:-.02em}
 .entry-arrow{margin-left:auto;font-size:1.6rem;transition:transform .4s}
 .entry:hover .entry-arrow{transform:translate(6px,-6px)}

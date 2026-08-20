@@ -89,7 +89,7 @@ MODELS = sorted(d for d in os.listdir(ROOT / "assets" / "models")
 
 # ---------------- TEMPLATE ----------------
 def page(rel, title, desc, body, active=""):
-    nav_items = [("Images", "images/"), ("Craft", "craft/"), ("3D", "3d/"), ("About", "about/")]
+    nav_items = [("Craft", "craft/"), ("3D", "3d/"), ("Images", "images/"), ("About", "about/")]
     links = "\n".join(
         f'      <a href="{rel}{href}" class="{"active" if active == label else ""}">\\{label}</a>'
         for label, href in nav_items)
@@ -106,6 +106,7 @@ def page(rel, title, desc, body, active=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="{rel}assets/img/favicon.svg">
 <link rel="stylesheet" href="{rel}assets/css/style.css">
 </head>
 <body>
@@ -180,9 +181,9 @@ home_body = f"""
 </section>
 
 <section class="entries">
-  <a class="entry reveal" href="images/">
-    <span class="entry-label muted">{len(RENDER)} projects · {len(AI_ALL)} AI series</span>
-    <span class="entry-title">Images</span>
+  <a class="entry reveal" href="craft/">
+    <span class="entry-label muted">TUBOH — in preparation</span>
+    <span class="entry-title">Craft</span>
     <span class="entry-arrow">↗</span>
   </a>
   <a class="entry reveal" href="3d/">
@@ -190,9 +191,9 @@ home_body = f"""
     <span class="entry-title">3D</span>
     <span class="entry-arrow">↗</span>
   </a>
-  <a class="entry reveal" href="craft/">
-    <span class="entry-label muted">TUBOH — coming soon</span>
-    <span class="entry-title">Craft</span>
+  <a class="entry reveal" href="images/">
+    <span class="entry-label muted">{len(RENDER)} projects · {len(AI_ALL)} AI series</span>
+    <span class="entry-title">Images</span>
     <span class="entry-arrow">↗</span>
   </a>
 </section>
@@ -338,8 +339,9 @@ craft_body = """
   <h1 class="display">Craft</h1>
   <p class="lede">The core of this practice is physical: product, material research, the move from drawing to produced object.</p>
   <p class="muted">TUBOH and selected physical work — told through process: sketches, Rhino models, materials
-  (MJF PA12, glass, O-rings), prototypes, packaging and patent — will live here. In preparation.</p>
-  <p class="cta"><a href="../images/">Meanwhile, see the images ↗</a></p>
+  (MJF PA12, glass, O-rings), prototypes and packaging — will live here.
+  Art objects, case studies and prototypes will join as the work is produced.</p>
+  <p class="cta"><a href="../3d/">Meanwhile, see the 3D models ↗</a></p>
 </section>
 """
 
@@ -355,7 +357,7 @@ about_body = f"""
     <p>I'm a designer trained in architecture, with a working background in high-end 3D visualization,
     photography and image-making. Over the years that eye for light, material and composition has pulled
     me toward the object itself.</p>
-    <p>I co-founded FOMES, where I took a product — TUBOH — from concept to a patented, produced object.
+    <p>I co-founded FOMES, where I took a product — TUBOH — from concept to a produced object.
     That's the direction I'm building toward: material-driven, craft-minded product design, with different
     digital media as the method rather than the identity.</p>
     <p>Based in Italy. Working internationally.</p>
